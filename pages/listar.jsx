@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import conectarDB from '../lib/dbConnect'
 import Movie from '../models/Movie'
+import Nav from "../components/Nav"
 
 export default function Listar({movies}) {
   return (
@@ -13,6 +14,7 @@ export default function Listar({movies}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container">
+      <Nav />
         <h1>Contatos!</h1>
         <Link href="/"><a className="btn btn-secondary w-100 mb-2">Index</a></Link>
         <Link href="/new"><a className="btn btn-secondary w-100 mb-2">Inserir Contato</a></Link>
