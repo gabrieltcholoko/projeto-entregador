@@ -1,5 +1,5 @@
 import Form from "../components/Form"
-import Nav from "../components/Nav"
+import Header from "../components/Header"
 
 const New = () => {
 
@@ -10,11 +10,14 @@ const New = () => {
         telefone: "",
     };
 
-    return(
-        <div className="container">
-            <Nav/>
-            <h1 className="my-3">Novo Contato</h1>
-           <Form formData={formData}/>
+    return (
+        <div >
+            <Header />
+            <div className="container">
+                <h1 className="my-3">Novo Contato</h1>
+                <Form formData={formData} />
+            </div>
+
         </div>
     );
 }

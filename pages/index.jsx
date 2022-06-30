@@ -3,11 +3,12 @@ import Link from 'next/link';
 
 import conectarDB from '../lib/dbConnect'
 import Movie from '../models/Movie'
-import Nav from "../components/Nav"
+import Header from '../components/Header';
 
 
 export default function Home({movies}) {
   return (
+
     <div>
       <Head>
         <title>Index</title>
@@ -15,12 +16,9 @@ export default function Home({movies}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       
-      <main className="container">
-      <Nav />
-        <h1>Tela inicial</h1>
-        <Link href="/new"><a className="btn btn-secondary me-2">Inserir Contato</a></Link>
-        <Link href="/listar"><a className="btn btn-secondary me-2">Listar Contato</a></Link>
-        
+      <main>
+      <Header />
+       
       </main>
     </div>
   )
