@@ -19,4 +19,3 @@
 - [Bootstrap](https://getbootstrap.com/)
 - [Next.js](https://nextjs.org/)
 
-**teste**
