@@ -17,23 +17,31 @@ export default function Listar({ movies }) {
         <Header />
       </div>
       <main className="container">
-
-
         <h1>Contatos!</h1>
-        
-        {
-          movies.map(({ _id, name }) => (
-            <div className="card mb-2" key={_id}>
-              <div className="card-body">
-                <div className="h5 text-uppercase">{name}</div>
-                <Link href={`/${_id}`}>
-                  <a className="btn btn-success btn-sm">+Info</a>
-                </Link>
-              </div>
-            </div>
-          ))
-        }
         <Link href="/new"><a className="btn btn-secondary w-100 mb-2">Novo Contato</a></Link>
+
+        <div className="d-flex p-2">
+          <div className="d-flex p-2">
+            {
+              movies.map(({ _id, name }) => (
+                <div className="" key={_id}>
+                  <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                    <h2 class="fw-normal">{name}</h2>
+                    <Link href={`/${_id}`}>
+                      <a className="btn btn-success btn-sm">+Info</a>
+                    </Link>
+                  </div>
+                </div>
+              ))
+            }
+
+
+
+          </div>
+        </div>
+
+
       </main>
     </div>
   )
