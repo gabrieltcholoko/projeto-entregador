@@ -10,6 +10,7 @@ const Header = () => {
                             <li><Link href="/"><a className="nav-link px-2 text-secondary">Home</a></Link></li>
                             <li><Link href="/listar"><a className="nav-link px-2 text-white">Listar Contato</a></Link></li>
                             <li><Link href="/new"><a className="nav-link px-2 text-white">Inserir Contato</a></Link></li>
+                            <li><Link href="/admin/"><a className="nav-link px-2 text-white">ADM</a></Link></li>
                         </ul>
                         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                             <input type="search" class="form-control form-control-dark text-white bg-dark" placeholder="Search..." aria-label="Search" />
