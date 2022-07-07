@@ -19,6 +19,17 @@ const MoviePage = ({ success, error, movie }) => {
         );
     }
 
+    const deleteData = async (id) => {
+        try {
+            await fetch(`/api/movie/${id}`, {
+                method: "DELETE",
+            });
+            router.push("/listar");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <div>
             <Header />
@@ -32,14 +43,14 @@ const MoviePage = ({ success, error, movie }) => {
                         <p className="fw-light">Cidade: {movie.cidade}</p>
                         <p className="fw-light">E-mail: {movie.email}</p>
                         <p className="fw-light">Telefone: {movie.telefone}</p>
-                        <div className='row'>
-                            <div className="col-4 p-3 centered ">
-                                <Link href="/listar">
-                                
-                                    <a className="btn btn-secondary w-100 mb-2 ">Voltar</a>
-                                </Link>
-                            </div>
-                        </div>
+
+                        <Link href="/listar">
+                            <a className="btn btn-success btn-sm me-2">Voltar</a>
+                        </Link>
+                        <Link href={`/${movie._id}/edit`}>
+                            <   a className="btn btn-warning btn-sm me-2">Editar</a>
+                        </Link>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(movie._id)}>Excluir</button>
                     </div>
                 </div>
             </div>

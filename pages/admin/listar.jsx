@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link';
 
-import conectarDB from '../lib/dbConnect'
-import Movie from '../models/Movie'
-import Header from "../components/Header"
+import conectarDB from '../../lib/dbConnect'
+import Movie from '../../models/Movie'
+import Header from "../../components/Header"
 
 export default function Listar({ movies }) {
   return (
@@ -17,7 +17,11 @@ export default function Listar({ movies }) {
         <Header />
       </div>
       <main className="container">
-        <h1>Contatos!</h1>
+        <h1>Usuario!</h1>
+        <div className='centered col-md-6'>
+          <Link href="/new"><a className="btn btn-secondary w-100 mb-2">Add Usuario</a></Link>
+        </div>
+
         <div className="d-flex p-2">
           <div className="d-flex">
             {

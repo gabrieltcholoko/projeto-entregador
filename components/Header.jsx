@@ -7,7 +7,7 @@ const Header = () => {
                 <div class="container">
                     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
                         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            <li><Link href="/"><a className="nav-link px-2 text-secondary">Home</a></Link></li>
+                            <li><Link href="/"><a className="nav-link px-2 text-white">Home</a></Link></li>
                             <li><Link href="/listar"><a className="nav-link px-2 text-white">Listar Contato</a></Link></li>
                             <li><Link href="/new"><a className="nav-link px-2 text-white">Inserir Contato</a></Link></li>
                             <li><Link href="/admin/"><a className="nav-link px-2 text-white">ADM</a></Link></li>
