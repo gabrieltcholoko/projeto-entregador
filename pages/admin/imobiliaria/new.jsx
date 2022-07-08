@@ -1,10 +1,12 @@
-import Form from "../../components/Form2"
-import Header from "../../components/Header"
+import Form from "../../../components/Form2"
+import Header from "../../../components/Header"
 
 const New = () => {
 
     const formData = {
-        name: "",
+        namejuridico: "",
+        namefantasia: "",
+        cnpj: "",
         cidade: "",
         email: "",
         telefone: "",

@@ -5,6 +5,7 @@ const New = () => {
 
     const formData = {
         name: "",
+        creci: "",
         cidade: "",
         email: "",
         telefone: "",

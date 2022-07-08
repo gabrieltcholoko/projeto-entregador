@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import conectarDB from "../../../../lib/dbConnect";
-import Movie from "../../../../models/Movie";
+import Imobiliaria from "../../../../models/Imobiliaria";
 import Link from 'next/link';
 import Header from "../../../../components/Header"
 
-const MoviePage = ({ success, error, movie }) => {
+const ImobiliariaPage = ({ success, error, imobiliaria }) => {
     const router = useRouter();
 
     if (!success) {
@@ -21,7 +21,7 @@ const MoviePage = ({ success, error, movie }) => {
 
     const deleteData = async (id) => {
         try {
-            await fetch(`/api/movie/${id}`, {
+            await fetch(`/api/imobiliaria/${id}`, {
                 method: "DELETE",
             });
             router.push("/admin/listaremp");
@@ -38,19 +38,22 @@ const MoviePage = ({ success, error, movie }) => {
                 <div className="card">
                     <div className="card-body">
                         <div className="card_title">
-                            <h5 className="text-uppercase">{movie.name}</h5>
+                            <h5 className="text-uppercase">{imobiliaria.namejuridico}</h5>
                         </div>
-                        <p className="fw-light">Cidade: {movie.cidade}</p>
-                        <p className="fw-light">E-mail: {movie.email}</p>
-                        <p className="fw-light">Telefone: {movie.telefone}</p>
+                        <p className="fw-light">Nome Juridico: {imobiliaria.namejuridico}</p>
+                        <p className="fw-light">Nome Fantasia: {imobiliaria.namefantasia}</p>
+                        <p className="fw-light">CNPJ: {imobiliaria.cnpj}</p>
+                        <p className="fw-light">Cidade: {imobiliaria.cidade}</p>
+                        <p className="fw-light">E-mail: {imobiliaria.email}</p>
+                        <p className="fw-light">Telefone: {imobiliaria.telefone}</p>
 
                         <Link href="/admin/listaremp">
                             <a className="btn btn-success btn-sm me-2">Voltar</a>
                         </Link>
-                        <Link href={`/admin/imobiliaria/${movie._id}/edit`}>
+                        <Link href={`/admin/imobiliaria/${imobiliaria._id}/edit`}>
                             <   a className="btn btn-warning btn-sm me-2">Editar</a>
                         </Link>
-                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(movie._id)}>Excluir</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(imobiliaria._id)}>Excluir</button>
                     </div>
                 </div>
             </div>
@@ -58,22 +61,22 @@ const MoviePage = ({ success, error, movie }) => {
     );
 };
 
-export default MoviePage;
+export default ImobiliariaPage;
 
 export async function getServerSideProps({ params }) {
     try {
         await conectarDB()
 
-        const movie = await Movie.findById(params.id).lean();
+        const imobiliaria = await Imobiliaria.findById(params.id).lean();
 
-        if (!movie) {
+        if (!imobiliaria) {
             return { props: { success: false, error: "Dados nao encontrados" } };
         }
 
-        console.log(movie);
-        movie._id = `${movie._id}`;
+        console.log(imobiliaria);
+        imobiliaria._id = `${imobiliaria._id}`;
 
-        return { props: { success: true, movie } };
+        return { props: { success: true, imobiliaria } };
     } catch (error) {
         console.log(error);
         if (error.kind === 'ObjectId') {

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const EmpresaSchema = new mongoose.Schema({
+const ImobiliariaSchema = new mongoose.Schema({
     namejuridico: {
         type: String,
         required: [true, "Insira um nome Valido"],
@@ -23,7 +23,6 @@ const EmpresaSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Insira uma senha valida"],
     },
     telefone: {
         type: String,
@@ -33,4 +32,4 @@ const EmpresaSchema = new mongoose.Schema({
 }, {versionKey: false
 });
 
-export default mongoose.models.Empresas || mongoose.model("Empresas", EmpresaSchema)
+export default mongoose.models.Imobiliaria || mongoose.model("Imobiliaria", ImobiliariaSchema)

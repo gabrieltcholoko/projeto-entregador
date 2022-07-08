@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import conectarDB from "../../../../lib/dbConnect";
-import Movie from "../../../../models/Movie";
+import Corretor from "../../../../models/Corretor";
 import Link from 'next/link';
 import Header from "../../../../components/Header"
 
-const MoviePage = ({ success, error, movie }) => {
+const CorretorPage = ({ success, error, corretor }) => {
     const router = useRouter();
 
     if (!success) {
@@ -21,7 +21,7 @@ const MoviePage = ({ success, error, movie }) => {
 
     const deleteData = async (id) => {
         try {
-            await fetch(`/api/movie/${id}`, {
+            await fetch(`/api/corretor/${id}`, {
                 method: "DELETE",
             });
             router.push("/admin/listarcorretor");
@@ -34,23 +34,25 @@ const MoviePage = ({ success, error, movie }) => {
         <div>
             <Header />
             <div className="container">
-                <h1>Dados do Usuario</h1>
+                <h1>Dados do Corretor</h1>
                 <div className="card">
                     <div className="card-body">
                         <div className="card_title">
-                            <h5 className="text-uppercase">{movie.name}</h5>
+                            <h5 className="text-uppercase">{corretor.name}</h5>
                         </div>
-                        <p className="fw-light">Cidade: {movie.cidade}</p>
-                        <p className="fw-light">E-mail: {movie.email}</p>
-                        <p className="fw-light">Telefone: {movie.telefone}</p>
+                        <p className="fw-light">Nome: {corretor.name}</p>
+                        <p className="fw-light">CRESI: {corretor.creci}</p>
+                        <p className="fw-light">Cidade: {corretor.cidade}</p>
+                        <p className="fw-light">E-mail: {corretor.email}</p>
+                        <p className="fw-light">Telefone: {corretor.telefone}</p>
 
                         <Link href="/admin/listarcorretor">
                             <a className="btn btn-success btn-sm me-2">Voltar</a>
                         </Link>
-                        <Link href={`/admin/corretor/${movie._id}/edit`}>
+                        <Link href={`/admin/corretor/${corretor._id}/edit`}>
                             <   a className="btn btn-warning btn-sm me-2">Editar</a>
                         </Link>
-                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(movie._id)}>Excluir</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(corretor._id)}>Excluir</button>
                     </div>
                 </div>
             </div>
@@ -58,22 +60,22 @@ const MoviePage = ({ success, error, movie }) => {
     );
 };
 
-export default MoviePage;
+export default CorretorPage;
 
 export async function getServerSideProps({ params }) {
     try {
         await conectarDB()
 
-        const movie = await Movie.findById(params.id).lean();
+        const corretor = await Corretor.findById(params.id).lean();
 
-        if (!movie) {
+        if (!corretor) {
             return { props: { success: false, error: "Dados nao encontrados" } };
         }
 
-        console.log(movie);
-        movie._id = `${movie._id}`;
+        console.log(corretor);
+        corretor._id = `${corretor._id}`;
 
-        return { props: { success: true, movie } };
+        return { props: { success: true, corretor } };
     } catch (error) {
         console.log(error);
         if (error.kind === 'ObjectId') {

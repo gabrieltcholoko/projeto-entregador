@@ -18,12 +18,12 @@ const fetcher = async (url) => {
 };
 
 
-const EditMovie = () => {
+const EditCorretor = () => {
     const router = useRouter();
     const { id } = router.query;
   
-    const { data: movie, error } = useSWR(
-      id ? `/api/movie/${id}` : null,
+    const { data: corretor, error } = useSWR(
+      id ? `/api/corretor/${id}` : null,
       fetcher
     );
   
@@ -31,7 +31,7 @@ const EditMovie = () => {
       return <div>Error</div>;
     }
   
-    if (!movie) {
+    if (!corretor) {
       return (
         <div className="container mt-5 text-center">
           <h1>Loading...</h1>
@@ -40,10 +40,11 @@ const EditMovie = () => {
     }
   
     const formData = {
-      name: movie.name,
-      cidade: movie.cidade,
-      email: movie.email,
-      telefone: movie.telefone, 
+      name: corretor.name,
+      creci: corretor.creci,
+      cidade: corretor.cidade,
+      email: corretor.email,
+      telefone: corretor.telefone, 
     };
   
     return (
@@ -51,11 +52,11 @@ const EditMovie = () => {
         <Header/>
       <div className="container">
         <h1>Editar Corretor</h1>
-        <Form forNewMovie={false} formData={formData}></Form>
+        <Form forNewCorretor={false} formData={formData}></Form>
       </div>
       </div>
     );
   };
   
-  export default EditMovie;
+  export default EditCorretor;
   

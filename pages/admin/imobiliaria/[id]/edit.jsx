@@ -22,8 +22,8 @@ const EditMovie = () => {
     const router = useRouter();
     const { id } = router.query;
   
-    const { data: movie, error } = useSWR(
-      id ? `/api/movie/${id}` : null,
+    const { data: imobiliaria, error } = useSWR(
+      id ? `/api/imobiliaria/${id}` : null,
       fetcher
     );
   
@@ -31,7 +31,7 @@ const EditMovie = () => {
       return <div>Error</div>;
     }
   
-    if (!movie) {
+    if (!imobiliaria) {
       return (
         <div className="container mt-5 text-center">
           <h1>Loading...</h1>
@@ -40,10 +40,12 @@ const EditMovie = () => {
     }
   
     const formData = {
-      name: movie.name,
-      cidade: movie.cidade,
-      email: movie.email,
-      telefone: movie.telefone, 
+      namejuridico: imobiliaria.namejuridico,
+      namefantasia: imobiliaria.namefantasia,
+      cnpj: imobiliaria.cnpj,
+      cidade: imobiliaria.cidade,
+      email: imobiliaria.email,
+      telefone: imobiliaria.telefone, 
     };
   
     return (
@@ -51,7 +53,7 @@ const EditMovie = () => {
         <Header/>
       <div className="container">
         <h1>Editar Imobiliaria</h1>
-        <Form forNewMovie={false} formData={formData}></Form>
+        <Form forNewImobiliaria={false} formData={formData}></Form>
       </div>
       </div>
     );

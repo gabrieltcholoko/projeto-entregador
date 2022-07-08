@@ -2,10 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link';
 
 import conectarDB from '../../lib/dbConnect'
-import Movie from '../../models/Movie'
+import Corretor from '../../models/Corretor'
 import Header from "../../components/Header"
 
-export default function Listar({ movies }) {
+export default function Listar({ corretores }) {
   return (
     <div>
       <Head>
@@ -17,16 +17,15 @@ export default function Listar({ movies }) {
         <Header />
       </div>
       <main className="container">
-        <div className='p-4'></div>
+        <h1>Corretores!</h1>
         <div className='centered col-md-6'>
           <Link href="/admin/corretor/new"><a className="btn btn-secondary w-100 mb-2">Add Corretor</a></Link>
         </div>
         
-
         <div className="d-flex p-2">
           <div className="d-flex">
             {
-              movies.map(({ _id, name }) => (
+              corretores.map(({ _id, name }) => (
                 <div className="" key={_id}>
                   <div className="justify-content-center m-3">
                     <svg className="bd-placeholder-img " width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
@@ -57,15 +56,15 @@ export async function getServerSideProps() {
   try {
     await conectarDB()
 
-    const res = await Movie.find({});
+    const res = await Corretor.find({});
 
-    const movies = res.map(doc => {
-      const movie = doc.toObject();
-      movie._id = `${movie._id}`;
-      return movie;
+    const corretores = res.map(doc => {
+      const corretor = doc.toObject();
+      corretor._id = `${corretor._id}`;
+      return corretor;
     })
 
-    return { props: { movies } };
+    return { props: { corretores } };
   } catch (error) {
     console.log(error);
   }

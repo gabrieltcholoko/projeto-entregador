@@ -2,16 +2,17 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 
-const Form = ({formData, forNewMovie = true}) => {
+const Form = ({formData, forNewImobiliaria = true}) => {
 
     const router = useRouter();
 
     const [form, setForm] = useState({
-        name: formData.name,
+        namejuridico: formData.namejuridico,
+        namefantasia: formData.namefantasia,
+        cnpj: formData.cnpj,
         cidade: formData.cidade,
         email: formData.email,
         telefone: formData.telefone,
-        
     })
 
     const [message, setMenssage] = useState([]);
@@ -26,9 +27,11 @@ const Form = ({formData, forNewMovie = true}) => {
     
 
     const handleSubmit = (e) =>{
+        console.log(form);
         e.preventDefault();
-        if(forNewMovie){
-            postData(form);
+        console.log(form);
+        if(forNewImobiliaria){
+            postData();
         }else{
             putData(form);
         } 
@@ -38,7 +41,7 @@ const Form = ({formData, forNewMovie = true}) => {
         setMenssage([]);
         const {id} = router.query;
         try {
-            const res = await fetch(`/api/movie/${id}`, {
+            const res = await fetch(`/api/imobiliaria/${id}`, {
                  method: "PUT",
                  headers: {
                       "Content-type": "application/json",
@@ -66,10 +69,10 @@ const Form = ({formData, forNewMovie = true}) => {
         }
     };
 
-    const postData = async (form) => {
+    const postData = async () => {
         try {
             console.log(form);
-                const res = await fetch("/api/movie", {
+                const res = await fetch("/api/imobiliaria", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json",
@@ -99,14 +102,15 @@ const Form = ({formData, forNewMovie = true}) => {
 
     return(
         <form onSubmit={handleSubmit}>
-                <input className="form-control my-2" type="text" placeholder="Nome" autoComplete="off" name="name" required value={form.name} onChange={handleChange}/>
+                <input className="form-control my-2" type="text" placeholder="Nome Juridico" autoComplete="off" name="namejuridico" required value={form.namejuridico} onChange={handleChange}/>
+                <input className="form-control my-2" type="text" placeholder="Nome Fantasia" autoComplete="off" name="namefantasia" required value={form.namefantasia} onChange={handleChange}/>
+                <input className="form-control my-2" type="text" placeholder="CNPJ" autoComplete="off" name="cnpj" required value={form.cnpj} onChange={handleChange}/>
                 <input className="form-control my-2" type="text" placeholder="Cidade" autoComplete="off" name="cidade" required value={form.cidade} onChange={handleChange}/>
                 <input className="form-control my-2" type="text" placeholder="E-mail" autoComplete="off" name="email" required value={form.email} onChange={handleChange}/>
                 <input className="form-control my-2" type="text" placeholder="Telefone" autoComplete="off" name="telefone" required value={form.telefone} onChange={handleChange}/>
-                
-                <button className="btn btn-dark w-100" type="submit">{forNewMovie ? "Enviar" : "Editar"}</button>
+                <button className="btn btn-dark w-100" type="submit">{forNewImobiliaria ? "Enviar" : "Editar"}</button>
                 <Link href="/admin/listaremp">
-                    <a className="btn btn-dark w-100 my-2">Voltar</a>
+                    <a className="btn btn-dark w-100 my-2">Cancelar</a>
                 </Link>
                 {message.map(({ message }) => (
                     <p key={message}>{message}</p>

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const CorretoresSchema = new mongoose.Schema({
+const CorretorSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Insira um nome Valido"],
@@ -19,7 +19,6 @@ const CorretoresSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Insira uma senha valida"],
     },
     telefone: {
         type: String,
@@ -29,4 +28,4 @@ const CorretoresSchema = new mongoose.Schema({
 }, {versionKey: false
 });
 
-export default mongoose.models.Corretores || mongoose.model("Corretores", CorretoresSchema)
+export default mongoose.models.Corretor || mongoose.model("Corretor", CorretorSchema)
