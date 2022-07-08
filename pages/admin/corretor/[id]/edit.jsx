@@ -1,7 +1,7 @@
-import Form from "../../../components/Form1";
+import Form from "../../../../components/Form1";
 import useSWR from "swr";
 import { useRouter } from "next/dist/client/router";
-import Header from "../../../components/Header";
+import Header from "../../../../components/Header";
 
 const fetcher = async (url) => {
     const res = await fetch(url);
@@ -50,7 +50,7 @@ const EditMovie = () => {
       <div>
         <Header/>
       <div className="container">
-        <h1>Editar Contato</h1>
+        <h1>Editar Corretor</h1>
         <Form forNewMovie={false} formData={formData}></Form>
       </div>
       </div>

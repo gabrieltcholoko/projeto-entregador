@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
-import conectarDB from "../../../lib/dbConnect";
-import Movie from "../../../models/Movie";
+import conectarDB from "../../../../lib/dbConnect";
+import Movie from "../../../../models/Movie";
 import Link from 'next/link';
-import Header from "../../../components/Header"
+import Header from "../../../../components/Header"
 
 const MoviePage = ({ success, error, movie }) => {
     const router = useRouter();
@@ -24,7 +24,7 @@ const MoviePage = ({ success, error, movie }) => {
             await fetch(`/api/movie/${id}`, {
                 method: "DELETE",
             });
-            router.push("/admin/listar");
+            router.push("/admin/listarcorretor");
         } catch (error) {
             console.log(error);
         }
@@ -44,10 +44,10 @@ const MoviePage = ({ success, error, movie }) => {
                         <p className="fw-light">E-mail: {movie.email}</p>
                         <p className="fw-light">Telefone: {movie.telefone}</p>
 
-                        <Link href="/admin/listar">
+                        <Link href="/admin/listarcorretor">
                             <a className="btn btn-success btn-sm me-2">Voltar</a>
                         </Link>
-                        <Link href={`/admin/${movie._id}/edit`}>
+                        <Link href={`/admin/corretor/${movie._id}/edit`}>
                             <   a className="btn btn-warning btn-sm me-2">Editar</a>
                         </Link>
                         <button className="btn btn-danger btn-sm" onClick={() => deleteData(movie._id)}>Excluir</button>

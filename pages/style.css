@@ -34,6 +34,8 @@ main{
   padding-top: 20px;
   width: 500px;
   height: 100px;
+  box-shadow: 0 0 1em #000;
+  border-radius: 5px;
 }
 
 /*login*/
@@ -65,4 +67,8 @@ main{
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.cor1{
+  padding-top: 20px;
 }

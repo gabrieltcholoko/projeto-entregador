@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link';
 
-import conectarDB from '../../lib/dbConnect'
-import Movie from '../../models/Movie'
-import Header from "../../components/Header"
+import conectarDB from '../lib/dbConnect'
+import Movie from '../models/Movie'
+import Header from "../components/Header"
 
 export default function Listar({ movies }) {
   return (
@@ -17,10 +17,11 @@ export default function Listar({ movies }) {
         <Header />
       </div>
       <main className="container">
-        <h1>Usuario!</h1>
+        <div className='p-4'></div>
         <div className='centered col-md-6'>
-          <Link href="/admin/new"><a className="btn btn-secondary w-100 mb-2">Add Usuario</a></Link>
+          <h1>Lista de Corretores</h1>
         </div>
+        
 
         <div className="d-flex p-2">
           <div className="d-flex">
@@ -31,7 +32,7 @@ export default function Listar({ movies }) {
                     <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
                     <h2 className="fw-normal text-center">{name}</h2>
                     <div className="text-center">
-                      <Link href={`/admin/${_id}`}>
+                      <Link href={`/${_id}`}>
                         <a className="btn btn-success btn-sm">+Info</a>
                       </Link>
                     </div>

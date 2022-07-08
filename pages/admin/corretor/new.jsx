@@ -1,5 +1,5 @@
-import Form from "../../components/Form1"
-import Header from "../../components/Header"
+import Form from "../../../components/Form1"
+import Header from "../../../components/Header"
 
 const New = () => {
 
@@ -14,7 +14,7 @@ const New = () => {
         <div >
             <Header />
             <div className="container">
-                <h1 className="my-3">Novo Contato</h1>
+                <h1 className="my-3">Adicionar Novo Corretor</h1>
                 <Form formData={formData} />
             </div>
 

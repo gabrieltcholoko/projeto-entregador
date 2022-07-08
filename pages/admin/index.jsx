@@ -21,13 +21,13 @@ export default function PageAdm() {
         <div className='card'>
           <div className='row p-4'>
             <div className='col-4 p-3'>
-              <Link href="/admin/listar"><a className="btn btn-secondary w-100 mb-2">Listar Usuarios</a></Link>
+              <Link href="/admin/listar"><a className="btn btn-secondary w-100 mb-2">Consulta Usuarios</a></Link>
             </div>
             <div className='col-4 p-3'>
-              <Link href="/admin/listaremp"><a className="btn btn-secondary w-100 mb-2">Listar Empresas</a></Link>
+              <Link href="/admin/listaremp"><a className="btn btn-secondary w-100 mb-2">Consulta Empresas</a></Link>
             </div>
             <div className='col-4 p-3'>
-              <Link href="/admin/listarcorretor"><a className="btn btn-secondary w-100 mb-2">Listar Corretores</a></Link>
+              <Link href="/admin/listarcorretor"><a className="btn btn-secondary w-100 mb-2">Consulta Corretores</a></Link>
             </div>
           </div>
         </div>

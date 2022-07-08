@@ -19,7 +19,7 @@ export default function Listar({ movies }) {
       <main className="container">
         <div className='p-4'></div>
         <div className='centered col-md-6'>
-          <Link href="/new"><a className="btn btn-secondary w-100 mb-2">Add Corretor</a></Link>
+          <Link href="/admin/corretor/new"><a className="btn btn-secondary w-100 mb-2">Add Corretor</a></Link>
         </div>
         
 
@@ -32,7 +32,7 @@ export default function Listar({ movies }) {
                     <svg className="bd-placeholder-img " width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
                     <h2 className="fw-normal text-center">{name}</h2>
                     <div className="text-center">
-                      <Link href={`/${_id}`}>
+                      <Link href={`/admin/corretor/${_id}`}>
                         <a className="btn btn-success btn-sm">+Info</a>
                       </Link>
                     </div>
