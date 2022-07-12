@@ -18,4 +18,4 @@
 - [Css](https://devdocs.io/css/)
 - [Bootstrap](https://getbootstrap.com/)
 - [Next.js](https://nextjs.org/)
-
+- [NextAuth.js](https://next-auth.js.org/)
