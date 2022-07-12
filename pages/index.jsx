@@ -1,12 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link';
 
-import conectarDB from '../lib/dbConnect'
-import Movie from '../models/Movie'
+
 import Header from '../components/Header';
 
 
-export default function Home({ movies }) {
+export default function Home({ }) {
   return (
 
     <div>
@@ -26,22 +25,4 @@ export default function Home({ movies }) {
 
     </div>
   )
-}
-
-export async function getServerSideProps() {
-  try {
-    await conectarDB()
-
-    const res = await Movie.find({});
-
-    const movies = res.map(doc => {
-      const movie = doc.toObject();
-      movie._id = `${movie._id}`;
-      return movie;
-    })
-
-    return { props: { movies } };
-  } catch (error) {
-    console.log(error);
-  }
 }

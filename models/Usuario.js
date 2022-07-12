@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const MovieSchema = new mongoose.Schema({
+const UsuarioSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Insira um nome Valido"],
@@ -21,4 +21,4 @@ const MovieSchema = new mongoose.Schema({
 }, {versionKey: false
 });
 
-export default mongoose.models.Movie || mongoose.model("Movie", MovieSchema)
+export default mongoose.models.Usuario || mongoose.model("Usuario", UsuarioSchema)

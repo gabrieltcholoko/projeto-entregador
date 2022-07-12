@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 import Header from '../../components/Header';
 
-
-
 export default function PageAdm() {
   return (
 
@@ -21,7 +19,7 @@ export default function PageAdm() {
         <div className='card'>
           <div className='row p-4'>
             <div className='col-4 p-3'>
-              <Link href="/admin/listar"><a className="btn btn-secondary w-100 mb-2">Consulta Usuarios</a></Link>
+              <Link href="/admin/listarusuario"><a className="btn btn-secondary w-100 mb-2">Consulta Usuarios</a></Link>
             </div>
             <div className='col-4 p-3'>
               <Link href="/admin/listaremp"><a className="btn btn-secondary w-100 mb-2">Consulta Empresas</a></Link>

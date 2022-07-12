@@ -1,20 +1,20 @@
 import conectarDB from "../../../lib/dbConnect"
-import Corretor from "../../../models/Corretor"
+import Usuario from "../../../models/Usuario"
 
 export default async function handler(req, res) {
   
   await conectarDB();
 
-  //post api/corretor
+  //post api/usuario
 
   const { method } = req;
   switch (method) {
     case "POST":
       try {
-        const corretor = new Corretor(req.body);
-        await corretor.save();
+        const usuario = new Usuario(req.body);
+        await usuario.save();
 
-        return res.status(200).json({ success: true, corretor });
+        return res.status(200).json({ success: true, usuario });
       } catch (error) {
         return res.status(400).json({ success: false, error });
       }

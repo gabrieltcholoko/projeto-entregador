@@ -1,20 +1,20 @@
 import conectarDB from "../../../lib/dbConnect"
-import Movie from "../../../models/Movie"
+import Login from "../../../models/Login"
 
 export default async function handler(req, res) {
   
   await conectarDB();
 
-  //post api/movie
+  //post api/login
 
   const { method } = req;
   switch (method) {
     case "POST":
       try {
-        const movie = new Movie(req.body);
-        await movie.save();
+        const login = new login(req.body);
+        await login.save();
 
-        return res.status(200).json({ success: true, movie });
+        return res.status(200).json({ success: true, login });
       } catch (error) {
         return res.status(400).json({ success: false, error });
       }

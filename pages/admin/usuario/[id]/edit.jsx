@@ -1,7 +1,7 @@
-import Form from "../../../components/Form1";
+import Form from "../../../../components/Form";
 import useSWR from "swr";
 import { useRouter } from "next/dist/client/router";
-import Header from "../../../components/Header";
+import Header from "../../../../components/Header";
 
 const fetcher = async (url) => {
     const res = await fetch(url);
@@ -18,12 +18,12 @@ const fetcher = async (url) => {
 };
 
 
-const EditMovie = () => {
+const EditUsuario = () => {
     const router = useRouter();
     const { id } = router.query;
   
-    const { data: movie, error } = useSWR(
-      id ? `/api/movie/${id}` : null,
+    const { data: usuario, error } = useSWR(
+      id ? `/api/usuario/${id}` : null,
       fetcher
     );
   
@@ -31,7 +31,7 @@ const EditMovie = () => {
       return <div>Error</div>;
     }
   
-    if (!movie) {
+    if (!usuario) {
       return (
         <div className="container mt-5 text-center">
           <h1>Loading...</h1>
@@ -40,22 +40,22 @@ const EditMovie = () => {
     }
   
     const formData = {
-      name: movie.name,
-      cidade: movie.cidade,
-      email: movie.email,
-      telefone: movie.telefone, 
+      name: usuario.name,
+      cidade: usuario.cidade,
+      email: usuario.email,
+      telefone: usuario.telefone, 
     };
   
     return (
       <div>
         <Header/>
       <div className="container">
-        <h1>Editar Contato</h1>
-        <Form forNewMovie={false} formData={formData}></Form>
+        <h1>Editar Usuario</h1>
+        <Form forNewUsuario={false} formData={formData}></Form>
       </div>
       </div>
     );
   };
   
-  export default EditMovie;
+  export default EditUsuario;
   

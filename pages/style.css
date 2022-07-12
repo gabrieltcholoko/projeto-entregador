@@ -39,14 +39,18 @@ main{
 }
 
 /*login*/
+
 .login{
   margin-top: 15%;
+  
 }
 .textoCentro{
   text-align: center;
 }
 .loginCentro{
   background-color: #f3f3f3;
+  box-shadow: 0 0 0.5em #000;
+  border-radius: 5px;
 }
 .form-signin {
   max-width: 330px;

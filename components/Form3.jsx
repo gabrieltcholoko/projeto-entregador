@@ -2,17 +2,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 
-const Form = ({formData, forNewCorretor = true}) => {
+const Form = ({formData, forNewLogin = true}) => {
 
     const router = useRouter();
 
     const [form, setForm] = useState({
-        name: formData.name,
-        creci: formData.crecei,
-        cidade: formData.cidade,
-        email: formData.email,
-        telefone: formData.telefone,
-        
+        login:formData.login,
+        password:formData.password,
     })
 
     const [message, setMenssage] = useState([]);
@@ -28,7 +24,7 @@ const Form = ({formData, forNewCorretor = true}) => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        if(forNewCorretor){
+        if(forNewLogin){
             postData();
         }else{
             putData(form);
@@ -39,7 +35,7 @@ const Form = ({formData, forNewCorretor = true}) => {
         setMenssage([]);
         const {id} = router.query;
         try {
-            const res = await fetch(`/api/corretor/${id}`, {
+            const res = await fetch(`/api/login/${id}`, {
                  method: "PUT",
                  headers: {
                       "Content-type": "application/json",
@@ -60,7 +56,7 @@ const Form = ({formData, forNewCorretor = true}) => {
                    }
              }else{
                 setMenssage([]);
-                router.push("/admin/listarcorretor");
+                router.push("/admin/listaremp");
             }
         } catch (error) {
             console.log(error);
@@ -70,7 +66,7 @@ const Form = ({formData, forNewCorretor = true}) => {
     const postData = async () => {
         try {
             console.log(form);
-                const res = await fetch("/api/corretor", {
+                const res = await fetch("/api/Login", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json",
@@ -90,7 +86,7 @@ const Form = ({formData, forNewCorretor = true}) => {
                         ]);
                     }
                 }else{
-                    router.push("/admin/listarcorretor");
+                    router.push("/admin/listaremp");
                 }
         } catch (error) {
             console.log(error);
@@ -100,16 +96,9 @@ const Form = ({formData, forNewCorretor = true}) => {
 
     return(
         <form onSubmit={handleSubmit}>
-                <input className="form-control my-2" type="text" placeholder="Nome" autoComplete="off" name="name" required value={form.name} onChange={handleChange}/>
-                <input className="form-control my-2" type="text" placeholder="CRECI" autoComplete="off" name="creci" required value={form.creci} onChange={handleChange}/>
-                <input className="form-control my-2" type="text" placeholder="Cidade" autoComplete="off" name="cidade" required value={form.cidade} onChange={handleChange}/>
-                <input className="form-control my-2" type="text" placeholder="E-mail" autoComplete="off" name="email" required value={form.email} onChange={handleChange}/>
-                <input className="form-control my-2" type="text" placeholder="Telefone" autoComplete="off" name="telefone" required value={form.telefone} onChange={handleChange}/>
-                
-                <button className="btn btn-dark w-100" type="submit">{forNewCorretor ? "Enviar" : "Editar"}</button>
-                <Link href="/admin/listarcorretor">
-                    <a className="btn btn-dark w-100 my-2">Cancelar</a>
-                </Link>
+                <input className="form-control my-2" type="text" placeholder="login" autoComplete="off" name="login" required value={form.login} onChange={handleChange}/>
+                <input className="form-control my-2" type="passwordd" placeholder="Senha" autoComplete="off" name="password" required value={form.passwordd} onChange={handleChange}/>
+                <button className="btn btn-dark w-100" type="submit">{forNewLogin ? "Cadastrar" : "Cadastrar"}</button>
                 {message.map(({ message }) => (
                     <p key={message}>{message}</p>
                 ))}

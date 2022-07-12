@@ -1,8 +1,9 @@
 import Link from 'next/link';
+
 const Login = () => {
 
     return (
-        <div className="login">
+        <div className="login ">
             <div className="form-signin w-100 h-50 p-4 m-auto loginCentro">
                 <form>
                     <h1 className="h3 mb-3 fw-normal textoCentro">Please sign in</h1>
@@ -24,6 +25,11 @@ const Login = () => {
                     <Link href="/">
                         <a className="w-100 btn btn-lg btn-primary " type="submit">Sign in</a>
                       </Link>
+                      <div className=" mb-3 textoCentro">
+                      <Link href="/login/registrar">
+                        <a className="registro" type="submit">Registrar-se</a>
+                      </Link>
+                    </div>
                     <p className="mt-5 mb-3 text-muted textoCentro">&copy; 2002–2022</p>
                 </form>
             </div>

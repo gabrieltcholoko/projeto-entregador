@@ -2,10 +2,10 @@ import Head from 'next/head'
 import Link from 'next/link';
 
 import conectarDB from '../lib/dbConnect'
-import Movie from '../models/Movie'
+import Imobiliaria from '../models/Imobiliaria'
 import Header from "../components/Header"
 
-export default function Listar({ movies }) {
+export default function Listar({ imobiliarias }) {
   return (
     <div>
       <Head>
@@ -25,11 +25,11 @@ export default function Listar({ movies }) {
         <div className="d-flex p-2">
           <div className="d-flex">
             {
-              movies.map(({ _id, name }) => (
+              imobiliarias.map(({ _id, namefantasia }) => (
                 <div className="" key={_id}>
                   <div className="justify-content-center m-3">
                     <svg className="bd-placeholder-img " width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                    <h2 className="fw-normal text-center">{name}</h2>
+                    <h2 className="fw-normal text-center">{namefantasia}</h2>
                     <div className="text-center">
                       <Link href={`/${_id}`}>
                         <a className="btn btn-success btn-sm">+Info</a>
@@ -56,15 +56,15 @@ export async function getServerSideProps() {
   try {
     await conectarDB()
 
-    const res = await Movie.find({});
+    const res = await Imobiliaria.find({});
 
-    const movies = res.map(doc => {
-      const movie = doc.toObject();
-      movie._id = `${movie._id}`;
-      return movie;
+    const imobiliarias = res.map(doc => {
+      const imobiliaria = doc.toObject();
+      imobiliaria._id = `${imobiliaria._id}`;
+      return imobiliaria;
     })
 
-    return { props: { movies } };
+    return { props: { imobiliarias} };
   } catch (error) {
     console.log(error);
   }

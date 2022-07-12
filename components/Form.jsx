@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { useState } from "react";
 
-const Form = ({formData, forNewMovie = true}) => {
+const Form = ({formData, forNewUsuario = true}) => {
 
     const router = useRouter();
 
@@ -27,7 +27,7 @@ const Form = ({formData, forNewMovie = true}) => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        if(forNewMovie){
+        if(forNewUsuario){
             postData(form);
         }else{
             putData(form);
@@ -38,7 +38,7 @@ const Form = ({formData, forNewMovie = true}) => {
         setMenssage([]);
         const {id} = router.query;
         try {
-            const res = await fetch(`/api/movie/${id}`, {
+            const res = await fetch(`/api/usuario/${id}`, {
                  method: "PUT",
                  headers: {
                       "Content-type": "application/json",
@@ -59,17 +59,17 @@ const Form = ({formData, forNewMovie = true}) => {
                    }
              }else{
                 setMenssage([]);
-                router.push("/listar");
+                router.push("/admin/listarusuario");
             }
         } catch (error) {
             console.log(error);
         }
     };
 
-    const postData = async (form) => {
+    const postData = async () => {
         try {
             console.log(form);
-                const res = await fetch("/api/movie", {
+                const res = await fetch("/api/usuario", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json",
@@ -89,7 +89,7 @@ const Form = ({formData, forNewMovie = true}) => {
                         ]);
                     }
                 }else{
-                    router.push("/listar");
+                    router.push("/admin/listarusuario");
                 }
         } catch (error) {
             console.log(error);
@@ -104,9 +104,9 @@ const Form = ({formData, forNewMovie = true}) => {
                 <input className="form-control my-2" type="text" placeholder="E-mail" autoComplete="off" name="email" required value={form.email} onChange={handleChange}/>
                 <input className="form-control my-2" type="text" placeholder="Telefone" autoComplete="off" name="telefone" required value={form.telefone} onChange={handleChange}/>
                 
-                <button className="btn btn-primary w-100" type="submit">{forNewMovie ? "Enviar" : "Editar"}</button>
-                <Link href="/listar">
-                    <a className="btn btn-warning w-100 my-2">Voltar</a>
+                <button className="btn btn-dark w-100" type="submit">{forNewUsuario ? "Enviar" : "Editar"}</button>
+                <Link href="/admin/listarusuario">
+                    <a className="btn btn-dark w-100 my-2">Voltar</a>
                 </Link>
                 {message.map(({ message }) => (
                     <p key={message}>{message}</p>

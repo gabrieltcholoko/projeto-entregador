@@ -27,9 +27,7 @@ const Form = ({formData, forNewImobiliaria = true}) => {
     
 
     const handleSubmit = (e) =>{
-        console.log(form);
         e.preventDefault();
-        console.log(form);
         if(forNewImobiliaria){
             postData();
         }else{

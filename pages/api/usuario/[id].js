@@ -1,50 +1,50 @@
 import conectarDB from "../../../lib/dbConnect"
-import Corretor from "../../../models/Corretor"
+import Usuario from "../../../models/Usuario"
 
 export default async function handler(req, res) {
   
   await conectarDB();
 
-  //GET api/corretor/:id
-  //DELETE api/corretor/:id
-  //PUT api/corretor/:id
+  //GET api/usuario/:id
+  //DELETE api/usuario/:id
+  //PUT api/usuario/:id
 
   const {method, query: {id},} = req;
 
   switch (method) {
     case "PUT":
       try {
-        const corretor = await Corretor.findByIdAndUpdate(id, req.body, {
+        const usuario = await Usuario.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!corretor) {
+        if (!usuario) {
           return res.status(404).json({ success: false });
         }
 
-        return res.json({ success: true, data: corretor });
+        return res.json({ success: true, data: usuario });
       } catch (error) {
         return res.status(404).json({ success: false, error });
       }
     case "DELETE":
         try {
-          const corretor = await Corretor.findByIdAndDelete(id);
-          if(!corretor){
+          const usuario = await Usuario.findByIdAndDelete(id);
+          if(!usuario){
             return res.status(404).json({success: false});
           }
-          return res.json({success: true, data: corretor});
+          return res.json({success: true, data: usuario});
 
         } catch (error) {
             return res.status(404).json({success: false});
         }
     case "GET":
         try {
-          const corretor = await Corretor.findById(id).lean();
-            if (!corretor) {
+          const usuario = await Usuario.findById(id).lean();
+            if (!usuario) {
                 return res.status(404).json({ success: false });
              }
       
-             return res.json({ success: true, data: corretor });
+             return res.json({ success: true, data: usuario });
             } catch (error) {
               return res.status(404).json({ success: false });
             }

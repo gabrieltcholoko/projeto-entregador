@@ -1,50 +1,50 @@
 import conectarDB from "../../../lib/dbConnect"
-import Movie from "../../../models/Movie"
+import Login from "../../../models/Login"
 
 export default async function handler(req, res) {
   
   await conectarDB();
 
-  //GET api/movie/:id
-  //DELETE api/movie/:id
-  //PUT api/movie/:id
+  //GET api/login/:id
+  //DELETE api/login/:id
+  //PUT api/login/:id
 
   const {method, query: {id},} = req;
 
   switch (method) {
     case "PUT":
       try {
-        const movie = await Movie.findByIdAndUpdate(id, req.body, {
+        const login = await Login.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!movie) {
+        if (!login) {
           return res.status(404).json({ success: false });
         }
 
-        return res.json({ success: true, data: movie });
+        return res.json({ success: true, data: login });
       } catch (error) {
         return res.status(404).json({ success: false, error });
       }
     case "DELETE":
         try {
-          const movie = await Movie.findByIdAndDelete(id);
-          if(!movie){
+          const login = await Login.findByIdAndDelete(id);
+          if(!login){
             return res.status(404).json({success: false});
           }
-          return res.json({success: true, data: movie});
+          return res.json({success: true, data: login});
 
         } catch (error) {
             return res.status(404).json({success: false});
         }
     case "GET":
         try {
-          const movie = await Movie.findById(id).lean();
-            if (!movie) {
+          const login = await Login.findById(id).lean();
+            if (!login) {
                 return res.status(404).json({ success: false });
              }
       
-             return res.json({ success: true, data: movie });
+             return res.json({ success: true, data: login });
             } catch (error) {
               return res.status(404).json({ success: false });
             }
