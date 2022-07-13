@@ -3,6 +3,10 @@ import Providers from 'next-auth/providers'
 import ModeloUser from '../../../models/Login'
 await conectarDB();
 
+const isCorrectCredentials = credentials =>
+  credentials.username === process.env.NEXTAUTH_USERNAME &&
+  credentials.password === process.env.NEXTAUTH_PASSWORD
+
 const options = {
     providers: [
         CredentialsProvider({
@@ -36,5 +40,6 @@ const options = {
 
     debug: false
 }
-
+//https://morioh.com/p/0b89b389eb57
+//https://dev.to/portugues/autenticacao-no-nextjs-com-usuario-e-senha-e-criando-rotas-privadas-137
 export default (req, res) => NextAuth(req, res, options)
