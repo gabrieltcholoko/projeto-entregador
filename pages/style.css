@@ -76,3 +76,30 @@ main{
 .cor1{
   padding-top: 20px;
 }
+
+.botoes{
+  background-color: aliceblue;
+  border: #000 1px solid;
+  width: 200px;
+}
+
+a{
+  text-decoration:none;
+  color: #000;
+  padding-left: 25px;
+}
+.link{
+  padding-left: 25px;
+  margin: 5px;
+}
+.centro{
+  margin-top: 10%;
+  padding: 3%;
+  border: #000 1px solid;
+}
+ .info{
+  border: #000 1px solid;
+  width: 100%;
+  padding: 10px;
+  
+ }
