@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const UsuarioSchema = new mongoose.Schema({
     name: {
@@ -17,7 +17,9 @@ const UsuarioSchema = new mongoose.Schema({
         type: String,
         required: [true, "Insira um numero de Telefone"],
     },
-  
+    login:{type: Schema.Types.ObjectId,
+        ref: 'Login' },
+    
 }, {versionKey: false
 });
 

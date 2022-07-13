@@ -1,7 +1,7 @@
 import Form from "../../../components/Form3"
 import Header from "../../../components/Header"
 
-const Index = () => {
+const Register = () => {
 
     const formData = {
         login: "",
@@ -20,4 +20,4 @@ const Index = () => {
     );
 }
 
-export default Index
+export default Register
