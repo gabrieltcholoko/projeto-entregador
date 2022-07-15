@@ -56,7 +56,7 @@ const Form = ({formData, forNewLogin = true}) => {
                    }
              }else{
                 setMenssage([]);
-                router.push("/");
+                router.push("/login/login");
             }
         } catch (error) {
             console.log(error);
@@ -86,7 +86,7 @@ const Form = ({formData, forNewLogin = true}) => {
                         ]);
                     }
                 }else{
-                    router.push("/");
+                    router.push("/login/login");
                 }
         } catch (error) {
             console.log(error);

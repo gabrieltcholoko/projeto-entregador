@@ -1,16 +1,16 @@
 import NextAuth from 'next-auth';
-import Providers from 'next-auth/providers';
+import CredentialsProvider from "next-auth/providers/credentials"
 import ModeloUser from '../../../models/Login';
 import conectarDB from '../../../lib/dbConnect';
 import bcrypt from 'bcrypt';
-await conectarDB();
+conectarDB();
 
 export default NextAuth({
     providers: [
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
             name: "Credentials",
-            
+
             credentials: {
                 username: { label: "Username", type: "text", placeholder: "jsmith" },
                 password: { label: "Password", type: "password" }
@@ -19,30 +19,33 @@ export default NextAuth({
                 // Add logic here to look up the user from the credentials supplied
                 const email = credentials.email;
                 const password = credentials.password;
-                const user = await ModeloUser.findOne({email})
+                const user = await ModeloUser.findOne({ email })
                 if (!user) {
-                    throw new Error("Voce nao esta registrado")
-                } 
+                    throw new Error("E-mail ou Senha INCORRETOS")
+                }
                 if (user) {
-                    return singInUser({password,user})
+                    return signInUser({ password, user })
                 }
             }
         }),
     ],
-    pages:{
-        signIn: "/signin"
+    pages: {
+        signIn: '/auth/signin',
+        signOut: '/auth/signout',
+        
     },
-    secret: "secrett"
+    secret: "secret",
+    database: process.env.MONGODB_URI,
 
 })
 
-const signInUser = async ({password, user})=>{
-    if(!user.password){
+const signInUser = async ({ password, user }) => {
+    if (!user.password) {
         throw new Error("Por favor informe a senha")
     }
-    const isMatch = await bcrypt.compare(password,user);
-    if(!isMatch){
-        throw new Error("Password nao correto")
+    const isMatch = await bcrypt.compare(password, user);
+    if (!isMatch) {
+        throw new Error("E-mail/Senha incorretos")
     }
     return user
 }
