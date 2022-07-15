@@ -17,8 +17,7 @@ const UsuarioSchema = new mongoose.Schema({
         type: String,
         required: [true, "Insira um numero de Telefone"],
     },
-    login:{type: Schema.Types.ObjectId,
-        ref: 'Login' },
+    login:{type: Schema.Types.ObjectId, ref: 'Login' },
     
 }, {versionKey: false
 });

@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
+//import Link from "next/link";
 import { useState } from "react";
 
 const Form = ({formData, forNewLogin = true}) => {
@@ -7,8 +7,8 @@ const Form = ({formData, forNewLogin = true}) => {
     const router = useRouter();
 
     const [form, setForm] = useState({
-        login:formData.login,
-        password:formData.password,
+        email: formData.email,
+        password: formData.password
     })
 
     const [message, setMenssage] = useState([]);
@@ -56,7 +56,7 @@ const Form = ({formData, forNewLogin = true}) => {
                    }
              }else{
                 setMenssage([]);
-                router.push("/admin/listaremp");
+                router.push("/");
             }
         } catch (error) {
             console.log(error);
@@ -66,7 +66,7 @@ const Form = ({formData, forNewLogin = true}) => {
     const postData = async () => {
         try {
             console.log(form);
-                const res = await fetch("/api/Login", {
+                const res = await fetch("/api/login", {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json",
@@ -86,7 +86,7 @@ const Form = ({formData, forNewLogin = true}) => {
                         ]);
                     }
                 }else{
-                    router.push("/admin/listaremp");
+                    router.push("/");
                 }
         } catch (error) {
             console.log(error);
@@ -96,8 +96,8 @@ const Form = ({formData, forNewLogin = true}) => {
 
     return(
         <form onSubmit={handleSubmit}>
-                <input className="form-control my-2" type="text" placeholder="login" autoComplete="off" name="login" required value={form.login} onChange={handleChange}/>
-                <input className="form-control my-2" type="passwordd" placeholder="Senha" autoComplete="off" name="password" required value={form.passwordd} onChange={handleChange}/>
+                <input className="form-control my-2" type="text" placeholder="Email@.com" autoComplete="off" name="email" required value={form.email} onChange={handleChange}/>
+                <input className="form-control my-2" type="password" placeholder="Senha" autoComplete="off" name="password" required value={form.password} onChange={handleChange}/>
                 <button className="btn btn-dark w-100" type="submit">{forNewLogin ? "Cadastrar" : "Cadastrar"}</button>
                 {message.map(({ message }) => (
                     <p key={message}>{message}</p>

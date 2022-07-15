@@ -1,10 +1,10 @@
 import Form from "../../../components/Form3"
 import Header from "../../../components/Header"
 
-const Register = () => {
+const New = () => {
 
     const formData = {
-        login: "",
+        email: "",
         password: "",
     };
 
@@ -20,4 +20,4 @@ const Register = () => {
     );
 }
 
-export default Register
+export default New
