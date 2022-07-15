@@ -38,7 +38,7 @@ const UsuarioPage = ({ success, error, usuario }) => {
                 <div className="card">
                     <div className="card-body">
                     <div className="card_title">
-                            <h5 className="text-uppercase">{usuario.name}</h5>
+                            <h5 className="text-uppercase">Nome: {usuario.name}</h5>
                         </div>
                         <p className="fw-light">Cidade: {usuario.cidade}</p>
                         <p className="fw-light">E-mail: {usuario.email}</p>

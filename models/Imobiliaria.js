@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema }  from "mongoose";
 
 const ImobiliariaSchema = new mongoose.Schema({
     namejuridico: {

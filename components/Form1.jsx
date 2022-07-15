@@ -8,7 +8,7 @@ const Form = ({formData, forNewCorretor = true}) => {
 
     const [form, setForm] = useState({
         name: formData.name,
-        creci: formData.crecei,
+        creci: formData.creci,
         cidade: formData.cidade,
         email: formData.email,
         telefone: formData.telefone,

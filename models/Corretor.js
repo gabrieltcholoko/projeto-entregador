@@ -1,4 +1,4 @@
-import mongoose, { Schema }  from "mongoose";
+import mongoose  from "mongoose";
 
 const CorretorSchema = new mongoose.Schema({
     name: {
@@ -24,7 +24,7 @@ const CorretorSchema = new mongoose.Schema({
         type: String,
         required: [true, "Insira um numero de Telefone"],
     },
-    usuario:{type: Schema.Types.ObjectId,
+    usuario:{type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario' },
   
 }, {versionKey: false

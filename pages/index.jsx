@@ -6,6 +6,8 @@ import Header from '../components/Header';
 
 
 export default function Home({ }) {
+//  https://dev.to/rafacdomin/autenticacao-no-react-com-context-api-e-hooks-4bia
+//react context api login example
   return (
 
     <div>

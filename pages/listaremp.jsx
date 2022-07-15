@@ -28,7 +28,7 @@ export default function Listar({ imobiliarias }) {
               imobiliarias.map(({ _id, namefantasia }) => (
                 <div className="" key={_id}>
                   <div className="justify-content-center m-3">
-                    <svg className="bd-placeholder-img " width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                    <svg className="bd-placeholder-img " width="240" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
                     <h2 className="fw-normal text-center">{namefantasia}</h2>
                     <div className="text-center">
                       <Link href={`/${_id}`}>

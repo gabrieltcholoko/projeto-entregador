@@ -41,16 +41,16 @@ const CorretorPage = ({ success, error, corretor }) => {
                             <h5 className="text-uppercase">{corretor.name}</h5>
                         </div>
                         <p className="fw-light">Nome: {corretor.name}</p>
-                        <p className="fw-light">CRESI: {corretor.creci}</p>
+                        <p className="fw-light">CRECI: {corretor.creci}</p>
                         <p className="fw-light">Cidade: {corretor.cidade}</p>
                         <p className="fw-light">E-mail: {corretor.email}</p>
                         <p className="fw-light">Telefone: {corretor.telefone}</p>
 
                         <Link href="/admin/listarcorretor">
-                            <a className="btn btn-success btn-sm me-2">Voltar</a>
+                            <a className="btn btn-dark btn-sm me-2">Voltar</a>
                         </Link>
                         <Link href={`/admin/corretor/${corretor._id}/edit`}>
-                            <   a className="btn btn-warning btn-sm me-2">Editar</a>
+                            <   a className="btn btn-dark btn-sm me-2">Editar</a>
                         </Link>
                         <button className="btn btn-danger btn-sm" onClick={() => deleteData(corretor._id)}>Excluir</button>
                     </div>
