@@ -25,7 +25,7 @@ export default function MeusDados() {
 
             <div className='d-flex'>
               <div className='d-flex flex-column'>
-                <Link href='/meusdados/editarperfil/'><a className="p-2 botoes">Editar Perfil</a></Link>
+                <Link href='/meusdados/editarperfil/'><a className="p-2 botoes cor2">Editar Perfil</a></Link>
                 <Link href='/meusdados/minhaspostagens/'><a className="p-2 botoes">Minhas Postagens</a></Link>
                 <Link href='/meusdados/saldo/'><a className="p-2 botoes">Meus Saldo</a></Link>
                 <Link href={`/meusdados/editarperfil/${_id}`}>

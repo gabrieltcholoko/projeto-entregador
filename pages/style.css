@@ -1,3 +1,15 @@
+/*GERAL*/
+.centered {
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.a:hover{
+  color: #000;
+}
+
+
+/*formularios*/
 .form-control-dark {
   border-color: var(--bs-gray);
 }
@@ -16,10 +28,7 @@
 }
 
 /* admin*/
-.centered {
-  margin: 0 auto !important;
-  float: none !important;
-}
+
 
 body {
   background-color: #f3f3f3;
@@ -125,9 +134,58 @@ a {
 .bot:hover{
   box-shadow: 0 0 0.3em #000;
   background-color: #fff;
+  color: #000;
 }
 .bot a {
   padding: 10px;
   text-align: center;
   color: #000;
 }
+
+/*Postagem*/
+
+.imagem{
+  width: clamp(80px, 50vw, 550px);
+  height: clamp(10px, 35vh , 400px);
+}
+
+.cor2{
+  background-color: #d3d3d3;
+}
+
+.opcoes{
+  padding-top: 20px;
+}
+
+/*Register*/
+
+.meio {
+  margin-top: 15%;
+  text-align: center;
+  padding-top: 20px;
+  width: 700px;
+  height: 200px;
+  box-shadow: 0 0 0.2em #000;
+  border-radius: 5px;
+}
+
+.btlogin{
+  width: 250px;
+  height: 100px;
+  box-shadow: 0 0 0.2em #000;
+  border-radius: 5px;
+  color: #000;
+  align-items: center;
+  text-align: center;
+}
+
+.btlogin:hover{
+  box-shadow: 0 0 0.4em #000;
+  background-color: #fff;
+  color: #000;
+}
+.alogin{
+  text-decoration: none;
+}
+
+

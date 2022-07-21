@@ -13,7 +13,7 @@ const PostagemSchema = new mongoose.Schema({
     valor:{
         type: Number, 
     },
-    corretor:{type: Schema.Types.ObjectId, ref: 'Corretor' },
+    login:{type: Schema.Types.ObjectId, ref: 'Login' },
   
 }, {versionKey: false
 });

@@ -1,9 +1,13 @@
 import Head from 'next/head'
 import Link from 'next/link';
 
-import Header from '../../../components/Header';
+import conectarDB from '../../../lib/dbConnect'
+import Postagem from '../../../models/Postagem'
+import Header from "../../../components/Header"
 
-export default function MeusDados() {
+
+export default function MeusDados({ postagens }) {
+
   return (
 
     <div>
@@ -25,11 +29,32 @@ export default function MeusDados() {
             <div className='d-flex'>
               <div className='d-flex flex-column'>
                 <Link href='/meusdados/editarperfil/'><a className="p-2 botoes">Editar Perfil</a></Link>
-                <Link href='/meusdados/minhaspostagens/'><a className="p-2 botoes">Minhas Postagens</a></Link>
+                <Link href='/meusdados/minhaspostagens/'><a className="p-2 botoes cor2">Minhas Postagens</a></Link>
                 <Link href='/meusdados/saldo/'><a className="p-2 botoes">Meus Saldo</a></Link>
               </div>
               <div className='info'>
-                <h1>Minhas posttagens</h1>
+                <div className='opcoes'>
+                  <div className='centered col-md-6'>
+                    <Link href="/meusdados/minhaspostagens/new"><a className="btn btn-secondary w-100 mb-2">Nova Postagem</a></Link>
+                  </div>
+                  <div className='d-flex'>
+                    {
+                      postagens.map(({ _id, titulo }) => (
+                        <div className="" key={_id}>
+                          <Link href={`/meusdados/minhaspostagens/${_id}`}><a className='a'>
+                            <div className="justify-content-center m-3 " >
+                              <svg className="bd-placeholder-img" width="200" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+                              <h2 className="fw-normal text-center cor2">{titulo}</h2>
+                              <div className="text-center">
+                              </div>
+                            </div>
+                          </a>
+                          </Link>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -37,4 +62,22 @@ export default function MeusDados() {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  try {
+    await conectarDB()
+
+    const res = await Postagem.find({});
+
+    const postagens = res.map(doc => {
+      const postagem = doc.toObject();
+      postagem._id = `${postagem._id}`;
+      return postagem;
+    })
+
+    return { props: { postagens } };
+  } catch (error) {
+    console.log(error);
+  }
 }

@@ -46,7 +46,7 @@ export default function Signin ({ csrfToken, providers }) {
                 </form>
 
                 <div className=" mb-3 textoCentro">
-                    <Link href="/login/registrar/new">
+                    <Link href="/login/registrar/">
                         <a className="registro" type="submit">Registrar-se</a>
                     </Link>
                 </div>

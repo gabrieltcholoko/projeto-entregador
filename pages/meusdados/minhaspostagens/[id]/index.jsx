@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import conectarDB from "../../../../lib/dbConnect";
-import Usuario from "../../../../models/Usuario";
+import Postagem from "../../../../models/Postagem";
 import Link from 'next/link';
 import Header from "../../../../components/Header"
 
-const UsuarioPage = ({ success, error, usuario }) => {
+const PostagemPage = ({ success, error, postagem }) => {
     const router = useRouter();
 
     if (!success) {
@@ -21,10 +21,10 @@ const UsuarioPage = ({ success, error, usuario }) => {
 
     const deleteData = async (id) => {
         try {
-            await fetch(`/api/usuario/${id}`, {
+            await fetch(`/api/postagem/${id}`, {
                 method: "DELETE",
             });
-            router.push("/admin/listarusuario");
+            router.push("/admin/listarpostagem");
         } catch (error) {
             console.log(error);
         }
@@ -34,23 +34,22 @@ const UsuarioPage = ({ success, error, usuario }) => {
         <div>
             <Header />
             <div className="container">
-                <h1>Dados da Usuario</h1>
+                <h1>Dados Postagem</h1>
                 <div className="card">
                     <div className="card-body">
                     <div className="card_title">
-                            <h5 className="text-uppercase">Nome: {usuario.name}</h5>
+                            <h5 className="text-uppercase">Titulo: {postagem.titulo}</h5>
                         </div>
-                        <p className="fw-light">Cidade: {usuario.cidade}</p>
-                        <p className="fw-light">E-mail: {usuario.email}</p>
-                        <p className="fw-light">Telefone: {usuario.telefone}</p>
+                        <p className="fw-light">Descricao: {postagem.descricao}</p>
+                        <p className="fw-light">Valor: {postagem.valor}</p>
 
-                        <Link href="/admin/listaremp">
+                        <Link href="/admin/listarpostagem">
                             <a className="btn btn-success btn-sm me-2">Voltar</a>
                         </Link>
-                        <Link href={`/admin/usuario/${usuario._id}/edit`}>
+                        <Link href={`/meusdados/minhaspostagens/${postagem._id}/edit`}>
                             <a className="btn btn-warning btn-sm me-2">Editar</a>
                         </Link>
-                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(usuario._id)}>Excluir</button>
+                        <button className="btn btn-danger btn-sm" onClick={() => deleteData(postagem._id)}>Excluir</button>
                     </div>
                 </div>
             </div>
@@ -58,22 +57,22 @@ const UsuarioPage = ({ success, error, usuario }) => {
     );
 };
 
-export default UsuarioPage;
+export default PostagemPage;
 
 export async function getServerSideProps({ params }) {
     try {
         await conectarDB()
 
-        const usuario = await Usuario.findById(params.id).lean();
+        const postagem = await Postagem.findById(params.id).lean();
 
-        if (!usuario) {
+        if (!postagem) {
             return { props: { success: false, error: "Dados nao encontrados" } };
         }
 
-        console.log(usuario);
-        usuario._id = `${usuario._id}`;
+        console.log(postagem);
+        postagem._id = `${postagem._id}`;
 
-        return { props: { success: true, usuario } };
+        return { props: { success: true, postagem } };
     } catch (error) {
         console.log(error);
         if (error.kind === 'ObjectId') {
