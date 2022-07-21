@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import { signIn } from "next-auth/react";
-import { useState } from "react";
+import {signIn} from "next-auth/react";
+import {useState} from "react";
 
-export default function Signin({ csrfToken}) {
+export default function Signin ({ csrfToken, providers }) {
 
     const [email, setEmail] = useState('');
 
@@ -10,41 +10,47 @@ export default function Signin({ csrfToken}) {
 
     const [message, setMessage] = useState(null);
 
-    const signinUser = async (e) => {
+    const signinUser= async (e)=>{
         e.preventDefault();
-        let options = {redirect: false, email, password }
-        const res = await signIn("credentials", options)
-        setMessage(null)
-        if(res?.error){
-            setMessage(res.error)
-        }   
+        let option = {redirect: false,email,password}
+        const res= await signIn("credentials", options)
+        if (res?.error){
+            setMessage
+        }
+        return Router.push("/")
+
     }
     return (
         <div className="login ">
             <div className="form-signin w-100 h-50 p-4 m-auto loginCentro">
-                <form method="post" action="/api/auth/signin/">
-                <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
+                <form method="post" action="/api/auth/singnin/email">
+                    <h1 className="h3 mb-3 fw-normal textoCentro">Login Usuario</h1>
 
-                    <h1 className="h3 mb-3 fw-normal textoCentro">Please sign in</h1>
-                    <div className="">
-                        <label >
-                            Email address
-                            <input type="email" id="email" className="form-control" name='email' value={email} onChange={e => setEmail(e.target.value)} />
-                        </label>
+                    <div className="form-floating">
+                        <input type="email" class="form-control" id="floatingInput" name='email' placeholder="name@example.com" />
+                        <label for="floatingInput">Email</label>
                     </div>
-                    <div className="">
+                    <div className="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" name='password' placeholder="Password" />
+                        <label for="floatingPassword">Senha</label>
+                    </div>
+
+                    <div className="checkbox mb-3 textoCentro">
                         <label>
-                            Password
-                            <input type="password" id='password' className="form-control" name='email' value={password} onChange={e => setPassword(e.target.value)} />
+                            <input type="checkbox" value="remember-me" /> Remember me
                         </label>
                     </div>
-                    <p style={{color: 'red'}}>{message}</p>
-                    <button onClick={(e) =>signinUser(e)}>Logar</button>
+                    <Link href="/">
+                        <a className="w-100 btn btn-lg btn-primary " type="submit">Sign in</a>
+                    </Link>
                 </form>
 
-                
-                
-                
+                <div className=" mb-3 textoCentro">
+                    <Link href="/login/registrar/new">
+                        <a className="registro" type="submit">Registrar-se</a>
+                    </Link>
+                </div>
+                <p className="mt-5 mb-3 text-muted textoCentro">&copy; 2002–2022</p>
 
             </div>
         </div>

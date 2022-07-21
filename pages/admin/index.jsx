@@ -17,15 +17,18 @@ export default function PageAdm() {
 
       <div className='container p-5'>
         <div className='card'>
-          <div className='row p-4'>
-            <div className='col-4 p-3'>
-              <Link href="/admin/listarusuario"><a className="btn btn-secondary w-100 mb-2">Consulta Usuarios</a></Link>
+          <div className='row p-4 centered'>
+            <div className='col-3 p-3 bot'>
+              <Link href="/admin/listarusuario"><a className="">Consulta Usuarios</a></Link>
             </div>
-            <div className='col-4 p-3'>
-              <Link href="/admin/listaremp"><a className="btn btn-secondary w-100 mb-2">Consulta Empresas</a></Link>
+            <div className='col-3 p-3 bot'>
+              <Link href="/admin/listaremp"><a className="">Consulta Empresas</a></Link>
             </div>
-            <div className='col-4 p-3'>
-              <Link href="/admin/listarcorretor"><a className="btn btn-secondary w-100 mb-2">Consulta Corretores</a></Link>
+            <div className='col-3 p-3 bot'>
+              <Link href="/admin/listarcorretor"><a className="">Consulta Corretores</a></Link>
+            </div>
+            <div className='col-3 p-3 bot'>
+              <Link href="/admin/listarcorretor"><a className="">Consulta Corretores</a></Link>
             </div>
           </div>
         </div>

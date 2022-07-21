@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Link from 'next/link';
-
 import conectarDB from '../../lib/dbConnect'
 import Corretor from '../../models/Corretor'
 import Header from "../../components/Header"

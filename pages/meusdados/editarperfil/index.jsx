@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link';
-
+import Corretor from '../../models/Corretor'
+import conectarDB from '../../lib/dbConnect'
 import Header from '../../../components/Header';
 
 export default function MeusDados() {
@@ -27,6 +28,9 @@ export default function MeusDados() {
                 <Link href='/meusdados/editarperfil/'><a className="p-2 botoes">Editar Perfil</a></Link>
                 <Link href='/meusdados/minhaspostagens/'><a className="p-2 botoes">Minhas Postagens</a></Link>
                 <Link href='/meusdados/saldo/'><a className="p-2 botoes">Meus Saldo</a></Link>
+                <Link href={`/meusdados/editarperfil/${_id}`}>
+                        <a className="btn btn-success btn-sm">+Info</a>
+                      </Link>
               </div>
               <div className='info'>
                 <h1>Editar perfil</h1>
@@ -38,3 +42,4 @@ export default function MeusDados() {
     </div>
   )
 }
+

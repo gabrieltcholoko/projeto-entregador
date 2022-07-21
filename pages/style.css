@@ -1,6 +1,7 @@
 .form-control-dark {
   border-color: var(--bs-gray);
 }
+
 .form-control-dark:focus {
   border-color: #fff;
   box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
@@ -20,15 +21,15 @@
   float: none !important;
 }
 
-body{
+body {
   background-color: #f3f3f3;
 }
 
-main{
+main {
   background-color: #fff;
 }
 
-.teste{
+.teste {
   margin-top: 15%;
   text-align: center;
   padding-top: 20px;
@@ -40,18 +41,21 @@ main{
 
 /*login*/
 
-.login{
+.login {
   margin-top: 15%;
-  
+
 }
-.textoCentro{
+
+.textoCentro {
   text-align: center;
 }
-.loginCentro{
+
+.loginCentro {
   background-color: #f3f3f3;
   box-shadow: 0 0 0.5em #000;
   border-radius: 5px;
 }
+
 .form-signin {
   max-width: 330px;
   padding: 15px;
@@ -73,33 +77,57 @@ main{
   border-top-right-radius: 0;
 }
 
-.cor1{
+.cor1 {
   padding-top: 20px;
 }
 
-.botoes{
+.botoes {
   background-color: aliceblue;
   border: #000 1px solid;
   width: 200px;
 }
 
-a{
-  text-decoration:none;
+a {
+  text-decoration: none;
   color: #000;
   padding-left: 25px;
 }
-.link{
+
+.link {
   padding-left: 25px;
   margin: 5px;
 }
-.centro{
+
+.centro {
   margin-top: 10%;
   padding: 3%;
-  
+
 }
- .info{
+
+.info {
   border: rgb(122, 121, 121) 1px solid;
   width: 100%;
   padding: 10px;
+
+}
+
+/*botoes adm*/
+.bot {
+  background-color: #f3f3f3;
+  border: #000 1px solid;
+  border-radius: 7px;
+  margin-right: 15px;
+  text-align: center;
+  margin-top: 15px;
+  width: clamp(100px, 50vw, 250px);
   
- }
+}
+.bot:hover{
+  box-shadow: 0 0 0.3em #000;
+  background-color: #fff;
+}
+.bot a {
+  padding: 10px;
+  text-align: center;
+  color: #000;
+}
